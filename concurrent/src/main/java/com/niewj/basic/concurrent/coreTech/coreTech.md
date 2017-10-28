@@ -1,0 +1,14 @@
+##### 1.1 什么是线程: thread1_1
+- Main 入口程序
+- Ball 球对象的定义，主要是move方法Ball#move
+- BallRunnable 把点击"开始"后的操作写成一个线程，异步执行。
+- BounceFrame 滚球的界面
+- BallComponent 放入球的集合：balls；注意定义的集合：CopyOnWriteArrayList
+> 使用ArrayList会报告ConcurrentModificationException
+   BallComponent#paintComponent#for (Ball b : balls) { << 这里
+   因为CopyOnWriteArrayList的操作比如：get(k) 都使用了ReentrantLock 可重入锁
+
+##### 1.2 线程中断: thread1_2
+##### 1.3 线程状态: thread1_3
+##### 1.4 线程属性: thread1_4
+##### 1.5 同步: thread1_5
