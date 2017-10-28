@@ -26,8 +26,6 @@ public class TestJStack {
             }
         }, "monitor_t2");
         t2.start();
-
-
     }
 
 }
