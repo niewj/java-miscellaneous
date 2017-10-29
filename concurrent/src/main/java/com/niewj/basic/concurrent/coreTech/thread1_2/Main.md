@@ -21,7 +21,9 @@ private native boolean isInterrupted(boolean ClearInterrupted);
 通过这个例子的运行，不难发现：原来是t.interrupt()被调用了，如果正在sleep然后娘希匹的被中断了，这个时候就会throws中断异常了。
 那么问题又来了： 异常要不要处理呢？怎么个处理法？---这里我的理解是：如果线程像这样一直死循环在做某事，你要觉得线程打断是个严重的事，我必须要stop，那就在catch里 手动t.interrupt()一下，然后可以判断中断状态给break掉像例子中似的；
 
-####### 核心技术多线程一章第二节说了，sleep的中断异常--不要在catch里什么也不做：
+---
+
+#####  核心技术多线程一章第二节说了，sleep的中断异常--不要在catch里什么也不做：
 要么你interrupt()了，在程序里处理它，或者更好的方式是，你throws抛给调用者，让他处理。
 哈哈！ 
 
