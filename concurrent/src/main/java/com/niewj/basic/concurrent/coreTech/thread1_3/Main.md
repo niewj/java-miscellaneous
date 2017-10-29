@@ -96,32 +96,30 @@ public enum State {
 或者：正在等拿锁，能让自己在调用了Object.wait之后重新被notify/notifyAll(), 以便继续;
 
 4. Waiting (等待)
-> 等待状态，是由于执行了一下3个方法：
-  1. Object.wait()
-  2. Thread.join()
-  3. LockSupport.park()
-  4. JUC中的 Lock+Condition.await()  -- 后面详细介绍
-  这个状态的线程，是在等待别的线程以使自己可以继续执行自己的动作：
-  线程a被调用了Object.wait()之后等待别的线程再调用notify()/notifyAll()来成全自己；
+> 等待状态，是由于执行了一下几个方法：
+**Object.wait()**
+**Thread.join()**
+**LockSupport.park()**
+**JUC中的 Lock+Condition.await()**  -- 后面详细介绍
+这个状态的线程，是在等待别的线程以使自己可以继续执行自己的动作：
+线程a被调用了Object.wait()之后等待别的线程再调用notify()/notifyAll()来成全自己；
   线程a执行中调用了b.join()后在等待b执行到死-Terminated；
   [Java的LockSupport.park()实现分析](http://www.importnew.com/20428.html)
   [LockSupport的park和unpark的基本使用,以及对线程中断的响应性](http://blog.csdn.net/aitangyong/article/details/38373137)
 
 5. Timed Waiting (计时等待)
 > 指定时间的等待状态。线程调用以下方法会进入计时等待：
-  1. Object.wait(long)
-  2. t.join(long)
-  3. LockSupport.parkNano(Object, long)
-  4. LockSupport.parkUntil(Object, long)
-  5. JUC：
-    Lock+Condition.await(long time, TimeUnit unit)
-    Lock.tryLock(long time, TimeUnit unit)
-  6. Thread.sleep(long)
+**Object.wait(long)**
+**t.join(long)**
+**LockSupport.parkNano(Object, long)**
+**LockSupport.parkUntil(Object, long)**
+JUC：
+**Lock+Condition.await(long time, TimeUnit unit)**
+**Lock.tryLock(long time, TimeUnit unit)**
+**Thread.sleep(long)**
 
 6. Terminated (终止)
->已终止了的线程。已经执行结束的线程的状态
-a. 正常执行完毕;
-b. 没有被捕获的异常终止了run方法而意外死亡.
+>已终止了的线程。已经执行结束的线程的状态. 情形有：a. 正常执行完毕; b. 没有被捕获的异常终止了run方法而意外死亡.
 
 ---
 wait/notify/notifyAll -- The current thread must own this object's monitor.
