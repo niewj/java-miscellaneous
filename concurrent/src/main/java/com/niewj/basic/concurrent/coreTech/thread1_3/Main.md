@@ -84,18 +84,18 @@ public enum State {
 ```
 
 ##### 线程的六个状态:
-- New (新建)
+1. New (新建)
 > 一个new Thread()执行了但是还未start()的线程状态。
 
-- Runnable (可运行)
+2. Runnable (可运行)
 > 将要在jvm里执行中了，但或许它在等待操作系统的资源例如进程。
 
-- Blocked (阻塞)
+3. Blocked (阻塞)
 >在等待 monitor lock(即: 监视器锁) 的线程的状态。
 或者：正在等拿锁，能让自己进入到synchronized代码块里的状态；
 或者：正在等拿锁，能让自己在调用了Object.wait之后重新被notify/notifyAll(), 以便继续;
 
-- Waiting (等待)
+4. Waiting (等待)
 > 等待状态，是由于执行了一下3个方法：
   1. Object.wait()
   2. Thread.join()
@@ -107,7 +107,7 @@ public enum State {
   [Java的LockSupport.park()实现分析](http://www.importnew.com/20428.html)
   [LockSupport的park和unpark的基本使用,以及对线程中断的响应性](http://blog.csdn.net/aitangyong/article/details/38373137)
 
-- Timed Waiting (计时等待)
+5. Timed Waiting (计时等待)
 > 指定时间的等待状态。线程调用以下方法会进入计时等待：
   1. Object.wait(long)
   2. t.join(long)
@@ -118,7 +118,7 @@ public enum State {
     Lock.tryLock(long time, TimeUnit unit)
   6. Thread.sleep(long)
 
-- Terminated (终止)
+6. Terminated (终止)
 >已终止了的线程。已经执行结束的线程的状态
 a. 正常执行完毕;
 b. 没有被捕获的异常终止了run方法而意外死亡.
