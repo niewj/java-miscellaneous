@@ -7,10 +7,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>gui</artifactId>
+    <artifactId>java-gui</artifactId>
     <packaging>jar</packaging>
 
-    <name>gui</name>
+    <name>java-gui</name>
     <url>http://maven.apache.org</url>
 
     <properties>

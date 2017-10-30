@@ -7,8 +7,8 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>concurrent</module>
-        <module>jui</module>
         <module>tutos</module>
+        <module>javagui</module>
     </modules>
     <packaging>pom</packaging>
 
