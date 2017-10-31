@@ -27,7 +27,7 @@
 </head>
 <body>
 
-<h2>MD !</h2>
+<h2>WTF !</h2>
 
 <div class="editormd" id="test-editormd">
     <textarea class="editormd-markdown-textarea" name="test-editormd-markdown-doc"></textarea>
