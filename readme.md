@@ -2,18 +2,10 @@
 #### _java-effective_
 **submodules:**
 - concurrent
-```
-并发练习代码
-```
+```并发练习代码```
 - javagui
-```
-java 图形界面
-```
+```java 图形界面```
 - tutos
-```
-教程随练代码
-```
+```教程随练代码```
 - webdk (webapp-spring-mybatis)
-```
-一个webapp模板，里面集中一些web工具或者代码段。
-```
+```一个webapp模板，里面集中一些web工具或者代码段。```
