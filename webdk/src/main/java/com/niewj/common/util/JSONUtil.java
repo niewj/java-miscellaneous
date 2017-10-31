@@ -1,4 +1,4 @@
-package com.niewj.util;
+package com.niewj.common.util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;

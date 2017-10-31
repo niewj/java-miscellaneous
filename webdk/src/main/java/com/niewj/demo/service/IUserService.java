@@ -1,4 +1,4 @@
-package com.niewj.model.service;
+package com.niewj.demo.service;
 
 import com.niewj.demo.model.User;
 

@@ -1,6 +1,6 @@
-package com.niewj.util.es;
+package com.niewj.common.util.es;
 
-import com.niewj.util.JSONUtil;
+import com.niewj.common.util.JSONUtil;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsResponse;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.update.UpdateRequest;

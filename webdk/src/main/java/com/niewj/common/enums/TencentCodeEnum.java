@@ -1,4 +1,4 @@
-package com.niewj.notes;
+package com.niewj.common.enums;
 
 /**
  * # 1. 枚举类示例

@@ -1,4 +1,4 @@
-package com.niewj.util;
+package com.niewj.common.util;
 
 import java.io.IOException;
 import java.util.HashMap;
