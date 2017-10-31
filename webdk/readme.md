@@ -7,3 +7,5 @@
 startup_index_settings.json
 startup_type_mappings.json
 这两个配置文件暂时未用到。
+---
+可以启动
