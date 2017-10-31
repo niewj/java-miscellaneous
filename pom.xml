@@ -9,6 +9,7 @@
         <module>concurrent</module>
         <module>tutos</module>
         <module>javagui</module>
+        <module>webdk</module>
     </modules>
     <packaging>pom</packaging>
 
