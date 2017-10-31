@@ -1,4 +1,4 @@
-#### _webdk_
+#### _webdk_ (webapp-spring-mybatis) ```一个webapp模板````
 - com.niewj.demo.[controller|dao|model|service]
 ```web app 常用的包格式和样例代码```
 - com.niewj.common
