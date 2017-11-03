@@ -23,7 +23,7 @@ import java.util.concurrent.ExecutionException;
 import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
 
 /**
- * Created by weijun.nie on 2017/5/19.
+ * Created by niewj on 2017/5/19.
  */
 public class ElasticUtil {
 

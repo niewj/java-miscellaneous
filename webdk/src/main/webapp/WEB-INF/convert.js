@@ -1,5 +1,5 @@
 /**
- * Created by weijun.nie on 2017/5/17.
+ * Created by niewj on 2017/5/17.
  */
 
 String.prototype.replaceAll = function (s1, s2) {

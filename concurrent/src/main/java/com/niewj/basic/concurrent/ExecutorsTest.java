@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.concurrent.*;
 
 /**
- * Created by weijun.nie on 2017/10/9.
+ * Created by niewj on 2017/10/9.
  */
 public class ExecutorsTest {
     public static void main(String[] args) throws ExecutionException, InterruptedException {

@@ -5,7 +5,7 @@ package com.niewj.common.enums;
  * # 2. 枚举根据code获取某个枚举对象的值方法 getCodeEnum(code)
  * #     TencentCodeEnum.values()
  * 腾讯反欺诈响应状态代码code
- * Created by weijun.nie on 2017/6/8.
+ * Created by niewj on 2017/6/8.
  */
 public enum TencentCodeEnum {
     CODE_4000(4000, "请求参数非法"),

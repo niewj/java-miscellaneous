@@ -2,7 +2,7 @@ package com.niewj.basic.concurrent.patterns.singleton;
 
 /**
  * 懒汉式单例
- * Created by weijun.nie on 2017/10/12.
+ * Created by niewj on 2017/10/12.
  */
 public class Singleton2 {
     public static int STATUS = 1;

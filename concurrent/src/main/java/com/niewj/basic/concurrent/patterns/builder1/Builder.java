@@ -1,7 +1,7 @@
 package com.niewj.basic.concurrent.patterns.builder1;
 
 /**
- * Created by weijun.nie on 2017/10/19.
+ * Created by niewj on 2017/10/19.
  */
 public abstract class Builder {
 

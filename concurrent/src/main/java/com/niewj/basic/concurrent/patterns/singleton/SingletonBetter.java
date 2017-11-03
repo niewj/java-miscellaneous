@@ -2,7 +2,7 @@ package com.niewj.basic.concurrent.patterns.singleton;
 
 /**
  * 懒汉式-安全延迟
- * Created by weijun.nie on 2017/10/12.
+ * Created by niewj on 2017/10/12.
  */
 public class SingletonBetter {
     private SingletonBetter() {

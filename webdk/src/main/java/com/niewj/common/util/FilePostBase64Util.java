@@ -1,21 +1,9 @@
 package com.niewj.common.util;
 
-import com.google.common.collect.Lists;
 import com.niewj.common.util.http.HttpClientFactory;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.client.methods.RequestBuilder;
-import org.apache.http.entity.ContentType;
-import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sun.misc.BASE64Decoder;
@@ -23,18 +11,15 @@ import sun.misc.BASE64Encoder;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
- * @see FilePostBase64Util#fetchRemoteFile(String, String, String, String, String) httpclient下载远程文件
+ * @author niewj
+ *         //@see FilePostBase64Util#fetchRemoteFile(String, String, String, String, String) httpclient下载远程文件
  * @see FilePostBase64Util#encodeFileToBase64(File) 将给定的文件编码成base64字符串
  * @see FilePostBase64Util#decodeBase64ToFile(String, String, String, String) 解码base64字符串并生成文件
  * <p>
  * http文件下载、base64编解码工具
- * Created by weijun.nie on 2017/11/1.
+ * Created by niewj on 2017/11/1.
  */
 public class FilePostBase64Util {
 
@@ -62,114 +47,115 @@ public class FilePostBase64Util {
      * @return 生成的文件对象
      * @throws Exception
      */
-    public static File fetchRemoteFile(String url, String bizCode, String fileId, String dir, String fname) throws Exception {
-        long startTime = System.currentTimeMillis();
-
-        Map<String, String> params = new HashMap<String, String>();
-        params.put(PARAM_BIZ_CODE, bizCode);
-        params.put(PARAM_FILE_ID, fileId);
-        File file = postWithDownload(url, params, dir, fname);
-        logger.info("*从IFS影像服务拉取图片fileId: {} 数据耗时: {}", fileId, System.currentTimeMillis() - startTime);
-        return file;
-    }
-
-    /**
-     * 发送下载文件的HTTP_POST请求
-     * 1)该方法用来下载文件
-     * 2)该方法会自动关闭连接,释放资源
-     * 3)方法内设置了连接和读取超时(时间由本工具类全局变量限定),超时或发生其它异常将抛出RuntimeException
-     * 4)请求参数含中文等特殊字符时,可直接传入本方法,方法内部会使用本工具类设置的全局DEFAULT_CHARSET对其转码
-     * 5)该方法在解码响应报文时所采用的编码,取自响应消息头中的[Content-Type:text/html; charset=GBK]的charset值
-     * 若响应消息头中未指定Content-Type属性,则会使用HttpClient内部默认的ISO-8859-1
-     * 6)下载的文件会保存在java.io.tmpdir环境变量指定的目录中
-     * CentOS6.5下是/tmp,
-     * CentOS6.5下的Tomcat中是/app/tomcat/temp,
-     * Win7下是C:\Users\Jadyer\AppData\Local\Temp\
-     * 7)下载的文件若比较大,可能导致程序假死或内存溢出,此时可考虑在本方法内部直接输出流
-     *
-     * @param reqURL 请求地址
-     * @param params 请求参数,无参数时传null即可
-     * @return 应答Map有两个key, isSuccess--yes or no,fullPath--isSuccess为yes时返回文件完整保存路径,failReason--isSuccess为no时返回下载失败的原因
-     */
-    public static File postWithDownload(String reqURL, Map<String, String> params, String dir, String fname) {
-        if (params == null || params.isEmpty()) {
-            logger.error("postWithDownload:params is null or empty");
-            return null;
-        }
-
-        // 1. httpClient请求参数
-        List<NameValuePair> nvpParam = Lists.newArrayListWithExpectedSize(params.size());
-        for (Map.Entry<String, String> entry : params.entrySet()) {
-            nvpParam.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
-        }
-
-        HttpResponse response = null;
-        File file = null;
-        HttpEntity entity = null;
-        try {
-            //构造请求配置
-            RequestConfig requestConfig = RequestConfig.custom()
-                    .setConnectionRequestTimeout(CONNECTION_REQUEST_TIMEOUT)
-                    .setConnectTimeout(CONNECTION_TIMEOUT)
-                    .setSocketTimeout(SOCKET_TIME_OUT)
-                    .build();
-
-            // 构造请求参数
-//            HttpEntity pEntity = new UrlEncodedFormEntity(nvpParam, UTF8);
-            //构造请求命令
-            HttpUriRequest request = RequestBuilder.post(reqURL)
-                    .setCharset(Charset.forName(UTF8))
-                    .setConfig(requestConfig)
-                    .setEntity(new UrlEncodedFormEntity(nvpParam, UTF8))
-                    .build();
-
-            //设置请求头
-//            if (CollectionUtil.notEmpty(headers)) {
-//                for (String key : headers.keySet()) {
-//                    request.setHeader(key, headers.get(key));
+//    public static File fetchRemoteFile(String url, String bizCode, String fileId, String dir, String fname) {
+//        long startTime = System.currentTimeMillis();
+//
+//        Map<String, String> params = new HashMap<String, String>();
+//        params.put(PARAM_BIZ_CODE, bizCode);
+//        params.put(PARAM_FILE_ID, fileId);
+//        File file = postWithDownload(url, params, dir, fname);
+//        logger.info("*从IFS影像服务拉取图片fileId: {} 数据耗时: {}", fileId, System.currentTimeMillis() - startTime);
+//        return file;
+//    }
+//
+//    /**
+//     * 发送下载文件的HTTP_POST请求
+//     * 1)该方法用来下载文件
+//     * 2)该方法会自动关闭连接,释放资源
+//     * 3)方法内设置了连接和读取超时(时间由本工具类全局变量限定),超时或发生其它异常将抛出RuntimeException
+//     * 4)请求参数含中文等特殊字符时,可直接传入本方法,方法内部会使用本工具类设置的全局DEFAULT_CHARSET对其转码
+//     * 5)该方法在解码响应报文时所采用的编码,取自响应消息头中的[Content-Type:text/html; charset=GBK]的charset值
+//     * 若响应消息头中未指定Content-Type属性,则会使用HttpClient内部默认的ISO-8859-1
+//     * 6)下载的文件会保存在java.io.tmpdir环境变量指定的目录中
+//     * CentOS6.5下是/tmp,
+//     * CentOS6.5下的Tomcat中是/app/tomcat/temp,
+//     * Win7下是C:\Users\Jadyer\AppData\Local\Temp\
+//     * 7)下载的文件若比较大,可能导致程序假死或内存溢出,此时可考虑在本方法内部直接输出流
+//     *
+//     * @param reqURL 请求地址
+//     * @param params 请求参数,无参数时传null即可
+//     * @return 应答Map有两个key, isSuccess--yes or no,fullPath--isSuccess为yes时返回文件完整保存路径,failReason--isSuccess为no时返回下载失败的原因
+//     */
+//    public static File postWithDownload(String reqURL, Map<String, String> params, String dir, String fname) {
+//        if (params == null || params.isEmpty()) {
+//            logger.error("postWithDownload:params is null or empty");
+//            return null;
+//        }
+//
+//        // 1. httpClient请求参数
+//        List<NameValuePair> nvpParam = Lists.newArrayListWithExpectedSize(params.size());
+//        for (Map.Entry<String, String> entry : params.entrySet()) {
+//            nvpParam.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+//        }
+//
+//        HttpResponse response = null;
+//        File file = null;
+//        HttpEntity entity = null;
+//        try {
+//            //构造请求配置
+//            RequestConfig requestConfig = RequestConfig.custom()
+//                    .setConnectionRequestTimeout(CONNECTION_REQUEST_TIMEOUT)
+//                    .setConnectTimeout(CONNECTION_TIMEOUT)
+//                    .setSocketTimeout(SOCKET_TIME_OUT)
+//                    .build();
+//
+//            // 构造请求参数
+////            HttpEntity pEntity = new UrlEncodedFormEntity(nvpParam, UTF8);
+//            //构造请求命令
+//            HttpUriRequest request = RequestBuilder.post(reqURL)
+//                    .setCharset(Charset.forName(UTF8))
+//                    .setConfig(requestConfig)
+//                    .setEntity(new UrlEncodedFormEntity(nvpParam, UTF8))
+//                    .build();
+//
+//            //设置请求头
+//            Map<String, String> headers = Maps.newHashMapWithExpectedSize(1);
+////            if (CollectionUtil.notEmpty( )) {
+////                for (String key : headers.keySet()) {
+////                    request.setHeader(key, headers.get(key));
+////                }
+////            }
+//
+//            //执行请求
+//            response = httpClient.execute(request);
+//
+//            //判断请求返回码
+//            int statusCode = response.getStatusLine().getStatusCode();
+//            if (response == null || statusCode != HttpStatus.SC_OK) {
+//                return null;
+//            }
+//
+//            entity = response.getEntity();
+//
+//            if (null == entity || !entity.getContentType().getValue().startsWith(ContentType.APPLICATION_OCTET_STREAM.getMimeType())) {
+//                logger.warn("*文件下载失败，url:{},params:{}", reqURL, JSONUtil.safeToJson(params));
+//                return null;
+//            }
+//
+//            File dirFile = new File(dir);
+//            if (!dirFile.exists()) {
+//                dirFile.mkdirs();
+//            }
+//
+//            file = new File(dirFile, fname);
+//
+//            FileUtils.copyInputStreamToFile(entity.getContent(), file); // 赋值文件
+//
+//            logger.info("fullPath=" + file.getCanonicalPath());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            if (response != null && response instanceof CloseableHttpResponse) {
+//                try {
+//                    ((CloseableHttpResponse) response).close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
 //                }
 //            }
-
-            //执行请求
-            response = httpClient.execute(request);
-
-            //判断请求返回码
-            int statusCode = response.getStatusLine().getStatusCode();
-            if (response == null || statusCode != HttpStatus.SC_OK) {
-                return null;
-            }
-
-            entity = response.getEntity();
-
-            if (null == entity || !entity.getContentType().getValue().startsWith(ContentType.APPLICATION_OCTET_STREAM.getMimeType())) {
-                logger.warn("*文件下载失败，url:{},params:{}", reqURL, JSONUtil.safeToJson(params));
-                return null;
-            }
-
-            File dirFile = new File(dir);
-            if (!dirFile.exists()) {
-                dirFile.mkdirs();
-            }
-
-            file = new File(dirFile, fname);
-
-            FileUtils.copyInputStreamToFile(entity.getContent(), file); // 赋值文件
-
-            logger.info("fullPath=" + file.getCanonicalPath());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (response != null && response instanceof CloseableHttpResponse) {
-                try {
-                    ((CloseableHttpResponse) response).close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        return file;
-    }
+//        }
+//
+//        return file;
+//    }
 
 
     /**
@@ -177,7 +163,7 @@ public class FilePostBase64Util {
      * @return file文件的base64字符串表示
      * @throws IOException
      */
-    public static String encodeFileToBase64(File file) throws IOException {
+    public static String encodeFileToBase64(File file) {
         logger.info("getFileBase64Desc:file= {}", file.getAbsolutePath());
 
         if (file == null || !file.isFile()) {
@@ -186,7 +172,13 @@ public class FilePostBase64Util {
         }
 
         // 获取二进制输入流
-        return new BASE64Encoder().encode(FileUtils.readFileToByteArray(file));
+        try {
+            return new BASE64Encoder().encode(FileUtils.readFileToByteArray(file));
+        } catch (IOException e) {
+            logger.error("encode base64文件：{} 异常", file.getAbsolutePath(), e);
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
@@ -211,22 +203,24 @@ public class FilePostBase64Util {
             FileUtils.writeByteArrayToFile(file, fileBytes);
         } catch (IOException e) {
             e.printStackTrace();
+            logger.error("解码base64文件对象e: {}", e);
         }
 
         return file;
     }
 
-    public static void main(String[] args) {
-        try {
-            File f = FilePostBase64Util.fetchRemoteFile("http://wwww.xxx.com/file/download", "666666", "104233809", "d:/aaa", "13233");
-            String s = FilePostBase64Util.encodeFileToBase64(f);
-            System.out.println(s);
-//            File ff = ImageHelper.decodeBase64ToFile(s, "d:/tmp", "123", "png");
-            File ff = FilePostBase64Util.decodeBase64ToFile(s, "d:/tmp", "123", null);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
+//    public static void main(String[] args) {
+//        try {
+//            File f = FilePostBase64Util.fetchRemoteFile("http://filesystem.msxf.lotest/file/download", "666666", "104225573", "d:/aaa", "13233");
+//            String s = FilePostBase64Util.encodeFileToBase64(f);
+//
+//            System.out.println(s);
+//            File ff = FilePostBase64Util.decodeBase64ToFile(s, "d:/tmp", "22123", "png");
+////            File ff = FilePostBase64Util.decodeBase64ToFile(s, "d:/tmp", "123", null);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 
 }

@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by weijun.nie on 2017/9/30.
+ * Created by niewj on 2017/9/30.
  */
 public class SimpleGuiTest {
 
