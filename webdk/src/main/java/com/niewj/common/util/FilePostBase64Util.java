@@ -14,12 +14,12 @@ import java.io.IOException;
 
 /**
  * @author niewj
- *         //@see FilePostBase64Util#fetchRemoteFile(String, String, String, String, String) httpclient下载远程文件
+ * @see //FilePostBase64Util#fetchRemoteFile(String, String, String, String, String) httpclient下载远程文件
  * @see FilePostBase64Util#encodeFileToBase64(File) 将给定的文件编码成base64字符串
  * @see FilePostBase64Util#decodeBase64ToFile(String, String, String, String) 解码base64字符串并生成文件
- * <p>
+ * <p/>
  * http文件下载、base64编解码工具
- * Created by niewj on 2017/11/1.
+ * Created by weijun.nie on 2017/11/1.
  */
 public class FilePostBase64Util {
 
@@ -165,7 +165,7 @@ public class FilePostBase64Util {
      */
     public static String encodeFileToBase64(File file) {
         logger.info("getFileBase64Desc:file= {}", file.getAbsolutePath());
-
+        StringBuffer _img = new StringBuffer("data:image/jpeg;base64,");
         if (file == null || !file.isFile()) {
             logger.error("file={} is not a file or is null", file.getAbsolutePath());
             return null;
@@ -173,7 +173,8 @@ public class FilePostBase64Util {
 
         // 获取二进制输入流
         try {
-            return new BASE64Encoder().encode(FileUtils.readFileToByteArray(file));
+            _img.append(new BASE64Encoder().encode(FileUtils.readFileToByteArray(file)).replaceAll("[\\s*\t\n\r]", ""));
+            return _img.toString();
         } catch (IOException e) {
             logger.error("encode base64文件：{} 异常", file.getAbsolutePath(), e);
             e.printStackTrace();

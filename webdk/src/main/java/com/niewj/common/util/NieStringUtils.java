@@ -3,7 +3,7 @@ package com.niewj.common.util;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * Created by niewj on 2017/9/13.
+ * Created by weijun.nie on 2017/9/13.
  */
 public class NieStringUtils {
 
