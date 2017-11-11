@@ -1,4 +1,4 @@
-package com.niewj.basic.util.encrypt;
+package com.niewj.common.util.security;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
