@@ -5,6 +5,8 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Main {
@@ -15,17 +17,18 @@ public class Main {
 
     }
 
+
     private static void goSplit() {
         Map<String, Integer> map = null;
         List<String> list = null;
-        File textFile = new File("D:\\Docs\\java_en_lang\\TCP_IP_Illustrated.txt");
+        File textFile = new File("D:\\Docs\\java_en_lang\\TCP_part.txt");
         // 1. 读取文章文件
         // 2. 去除各种分割字符，生成 Set<word, count>单词词组
         try {
             map = readBookText(textFile);
             list = new ArrayList<>(map.keySet());
             Collections.sort(list);
-            FileUtils.writeLines(new File("d:/tcpip.txt"), list);
+            FileUtils.writeLines(new File("d:/tcpip.txt"), list, false);
         } catch (IOException e) {
 
         }
@@ -45,7 +48,7 @@ public class Main {
             String[] wordSegments = line.replaceAll("[\'\"#@$%^&\\*\\(\\)\\-\\.\\,\\>\\<\\+\\:\\;\\=\\]\\[\\{\\}\\?\\~\\`\\!\\_\\|]", " ").split("[\\s*\t\n\r/]");
             for (String seg : wordSegments) {
                 // 数字跳过
-                if (NieStringUtils.isNumber(seg)|| !NieStringUtils.isAllLetters(seg) || NumberUtils.isNumber(seg) || seg.length() <3) {
+                if (NieStringUtils.isNumber(seg) || !NieStringUtils.isAllLetters(seg) || NumberUtils.isNumber(seg) || seg.length() < 3) {
                     System.out.println(seg);
                     continue;
                 }
