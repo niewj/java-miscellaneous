@@ -19,3 +19,15 @@
 ```spring-mvc-rest-exhandler```
 - *kafka-lessons
 ```kafka-lessons```
+
+
+```
+<modules>
+    <module>concurrent</module>
+    <module>tutos</module>
+    <module>java-gui</module>
+    <module>zoo-spring-mybatis-web</module>
+    <module>zoo-kafka-lessons</module>
+    <module>zoo-springboot-demo1</module>
+</modules>
+```
