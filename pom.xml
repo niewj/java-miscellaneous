@@ -11,6 +11,7 @@
         <module>java-gui</module>
         <module>zoo-spring-mybatis-web</module>
         <module>zoo-kafka-lessons</module>
+        <module>zoo-springboot-demo1</module>
     </modules>
     <packaging>pom</packaging>
 
