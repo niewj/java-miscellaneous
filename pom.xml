@@ -10,6 +10,7 @@
         <module>tutos</module>
         <module>java-gui</module>
         <module>zoo-spring-mybatis-web</module>
+        <module>zoo-kafka-lessons</module>
     </modules>
     <packaging>pom</packaging>
 
