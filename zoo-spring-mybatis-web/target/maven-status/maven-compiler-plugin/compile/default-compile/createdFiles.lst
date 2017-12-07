@@ -3,6 +3,7 @@ com\niewj\common\util\security\Base64Util.class
 com\niewj\common\util\http\net\HttpHelper$1.class
 com\niewj\common\util\http\net\HttpHelper.class
 com\niewj\common\util\http\NieHttpResponse.class
+com\niewj\common\ThreadLocalUtil.class
 com\niewj\common\util\hbase\PutInfo.class
 com\niewj\common\enums\TencentCodeEnum.class
 com\niewj\common\util\security\SecurityUtil.class
@@ -12,6 +13,7 @@ com\niewj\common\util\security\FormatUtil$MoneyType.class
 com\niewj\common\util\security\RsaConst.class
 com\niewj\demo\service\IUserService.class
 com\niewj\demo\controller\TestController.class
+com\niewj\common\exception\NieExceptionHandler.class
 com\niewj\common\util\DateUtil.class
 com\niewj\common\util\http\net\HttpHelper$2.class
 com\niewj\common\util\PropUtil.class

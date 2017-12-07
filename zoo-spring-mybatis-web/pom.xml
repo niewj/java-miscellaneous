@@ -6,9 +6,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>zoo-web</artifactId>
+    <artifactId>zoo-spring-mybatis-web</artifactId>
     <packaging>war</packaging>
-    <name>zoo-web Maven Webapp</name>
+    <name>zoo-spring-mybatis-web Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -232,6 +232,22 @@
     </dependencies>
     <build>
         <finalName>${project.artifactId}</finalName>
+        <!-- 启用filter功能为resources中的变量赋值 -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
             <!-- 1.resource plugin -->
             <plugin>
@@ -250,7 +266,7 @@
                     <source>1.7</source>
                     <target>1.7</target>
                     <compilerArguments>
-                        <verbose />
+                        <verbose/>
                     </compilerArguments>
                 </configuration>
             </plugin>
@@ -281,7 +297,7 @@
                     <systemProperties>
                         <systemProperty>
                             <name>tomcat.port</name>
-                            <value>8098</value>
+                            <value>8088</value>
                         </systemProperty>
                     </systemProperties>
                     <webApp>${basedir}/target/${project.artifactId}.war</webApp>
@@ -318,4 +334,28 @@
 
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <filters>
+                    <filter>profile-dev.properties</filter>
+                </filters>
+            </build>
+        </profile>
+
+        <profile>
+            <id>product</id>
+            <build>
+                <filters>
+                    <filter>profile-product.properties</filter>
+                </filters>
+            </build>
+        </profile>
+    </profiles>
+
 </project>

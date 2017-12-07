@@ -7,7 +7,7 @@
 ```java 图形界面```
 - tutos
 ```教程随练代码```
-- zoo-web (webapp-spring-mybatis)
+- zoo-spring-mybatis-web (webapp-spring-mybatis)
 ```一个webapp模板，里面集中一些web工具或者代码段。```
 - *spring-rabbitmq
 ```spring集成rabbitmq配置```

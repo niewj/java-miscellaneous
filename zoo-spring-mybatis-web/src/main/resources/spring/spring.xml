@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" lazy-init="false">
+        <property name="fileEncoding" value="UTF-8"/>
+        <property name="locations">
+            <list>
+                <value>classpath:config/important.properties</value>
+                <value>classpath:config/config.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <context:component-scan base-package="com.niewj">
+        <context:include-filter type="regex" expression="demo.service.*"/>
+    </context:component-scan>
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <mvc:default-servlet-handler/>
+    <!--<mvc:resources mapping="/theme/**" location="/theme/" />
+    <mvc:resources mapping="/js/**" location="/js/" />
+    <mvc:resources mapping="/test/**" location="/test/" />
+    <mvc:resources mapping="/*.ico" location="/" />-->
+
+    <!-- JDBC data source -->
+    <!-- mysql -->
+    <bean id="source-main" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${report.database.driver}"/>
+        <property name="url" value="${report.database.url}"/>
+        <property name="username" value="${report.database.username}"/>
+        <property name="password" value="${report.database.password}"/>
+    </bean>
+
+    <bean id="sessionFactory-main" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="source-main"/>
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath:mybatis/mysql/UserMapper.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.niewj.*.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sessionFactory-main"/>
+    </bean>
+
+    <!-- ##################=====> [事务管理START] <====############### -->
+    <!-- Mybatis事务管理 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="source-main"/>
+    </bean>
+    <aop:config proxy-target-class="true">
+        <aop:pointcut id="serviceMethod" expression="execution(* com.niewj.*.service.impl.*.*(..))"/>
+        <aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice"/>
+    </aop:config>
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="search*" read-only="true"/>
+            <tx:method name="stat*" read-only="true"/>
+            <tx:method name="list*" read-only="true"/>
+            <tx:method name="insert*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="save*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="add*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="remove*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="del*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception"/>
+        </tx:attributes>
+    </tx:advice>
+    <!-- ##################=====>[事务管理 END ]<====############### -->
+
+    <!--<import resource="classpath:spring/spring-mongodb.xml"/>-->
+</beans>

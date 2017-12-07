@@ -9,7 +9,7 @@
         <module>concurrent</module>
         <module>tutos</module>
         <module>java-gui</module>
-        <module>zoo-web</module>
+        <module>zoo-spring-mybatis-web</module>
     </modules>
     <packaging>pom</packaging>
 
