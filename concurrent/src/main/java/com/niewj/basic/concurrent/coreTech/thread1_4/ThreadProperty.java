@@ -1,15 +1,12 @@
 
 package com.niewj.basic.concurrent.coreTech.thread1_4;
 
-import org.apache.commons.io.IOExceptionWithCause;
 
-import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @see Thread#setPriority(int) 线程优先级
  * @see Thread#setDaemon(boolean) 设置守护线程
- * @see
  */
 public class ThreadProperty {
 
@@ -46,11 +43,11 @@ class MyBox implements Runnable {
     private final String name;
     private final AtomicInteger count = new AtomicInteger(0);
 
-    public MyBox(String name) {
+    MyBox(String name) {
         this.name = name;
     }
 
-    public String getName() {
+    private String getName() {
         return name;
     }
 

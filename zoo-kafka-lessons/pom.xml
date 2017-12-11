@@ -10,7 +10,6 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.niewj.basic</groupId>
     <artifactId>zoo-kafka-lessons</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -19,5 +18,19 @@
         <module>kafka-test</module>
     </modules>
 
+    <build>
+        <plugins>
+            <!-- 指定maven-compiler-plugin的版本，会同时影响LanguageLevel和JavaCompiler. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
 
 </project>

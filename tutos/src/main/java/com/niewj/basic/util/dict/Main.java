@@ -2,14 +2,15 @@ package com.niewj.basic.util.dict;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.math.NumberUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Main {
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
 
@@ -19,8 +20,8 @@ public class Main {
 
 
     private static void goSplit() {
-        Map<String, Integer> map = null;
-        List<String> list = null;
+        Map<String, Integer> map;
+        List<String> list;
         File textFile = new File("D:\\Docs\\java_en_lang\\TCP_part.txt");
         // 1. 读取文章文件
         // 2. 去除各种分割字符，生成 Set<word, count>单词词组
@@ -30,7 +31,7 @@ public class Main {
             Collections.sort(list);
             FileUtils.writeLines(new File("d:/tcpip.txt"), list, false);
         } catch (IOException e) {
-
+            logger.error("IOException: {}", e);
         }
         printWord();
     }
