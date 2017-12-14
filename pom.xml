@@ -12,6 +12,7 @@
         <module>zoo-spring-mybatis-web</module>
         <module>zoo-kafka-lessons</module>
         <module>zoo-springboot-demo1</module>
+        <module>zoo-jfinal-web</module>
     </modules>
     <packaging>pom</packaging>
 
