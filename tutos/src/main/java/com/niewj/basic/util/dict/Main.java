@@ -13,11 +13,8 @@ public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
-
         goSplit();
-
     }
-
 
     private static void goSplit() {
         Map<String, Integer> map;
@@ -66,8 +63,6 @@ public class Main {
         System.out.println(map.size());
         return map;
     }
-
-
 }
 //
 //class Word {

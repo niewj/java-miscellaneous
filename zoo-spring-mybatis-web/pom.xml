@@ -321,6 +321,8 @@
                 <artifactId>maven-jetty-plugin</artifactId>
                 <version>6.1.26</version>
                 <configuration>
+                    <!-- 添加这行 -->
+                    <webDefaultXml>src/main/resources/jetty/webdefault.xml</webDefaultXml>
                     <systemProperties>
                         <systemProperty>
                             <name>tomcat.port</name>
