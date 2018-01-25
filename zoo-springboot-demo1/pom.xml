@@ -64,6 +64,18 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
+            <!-- 2. maven-compiler-plugin : version affects LanguageLevel and JavaCompiler. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <compilerArguments>
+                        <verbose/>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

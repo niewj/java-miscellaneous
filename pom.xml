@@ -13,6 +13,7 @@
         <module>zoo-kafka-lessons</module>
         <module>zoo-springboot-demo1</module>
         <module>zoo-jfinal-web</module>
+        <module>zoo-hbase-path</module>
     </modules>
     <packaging>pom</packaging>
 
