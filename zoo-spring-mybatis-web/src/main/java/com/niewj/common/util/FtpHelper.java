@@ -2,8 +2,8 @@
 //
 //import com.alibaba.fastjson.JSON;
 //import com.xxxxx.datasource.common.ResponseCodeEnum;
-//import com.xxxxx.datasource.http.MSXFHttpClient;
-//import com.xxxxx.datasource.http.MSXFHttpResponse;
+//import com.xxxxx.datasource.http.niewjHttpClient;
+//import com.xxxxx.datasource.http.niewjHttpResponse;
 //import com.xxxxx.datasource.thirdpart.exception.ThirdPartException;
 //import com.xxxxx.datasource.thirdpart.utils.FileUtils;
 //import com.xxxxx.datasource.thirdpart.utils.StringMsg;
@@ -90,13 +90,13 @@
 //            throw new ThirdPartException(ResponseCodeEnum.INTERNAL_HANDLE_ERROR, StringMsg.fmtMsg("create image file exception"), e);
 //        }
 //
-//        MSXFHttpResponse uploadRes;
+//        niewjHttpResponse uploadRes;
 //        try {
 //            Map<String, String> otherParam = new HashMap<>();
 //            otherParam.put("bizCode", NciicHelper.simpleImageFtpBizCode);
 //            otherParam.put("fileCategory", NciicHelper.simpleImageFtpCategory);
 //            otherParam.put("serialNo", UUID.randomUUID().toString().replaceAll("-", ""));
-//            uploadRes = MSXFHttpClient.fileUpload(file, otherParam, imageFtpUrl + "/file/upload");
+//            uploadRes = niewjHttpClient.fileUpload(file, otherParam, imageFtpUrl + "/file/upload");
 //        } catch (IOException e) {
 //            throw new ThirdPartException(ResponseCodeEnum.INTERNAL_HANDLE_ERROR, StringMsg.fmtMsg(serviceCode + " upload image exception", e));
 //        }
@@ -267,14 +267,14 @@
 //            throw new ThirdPartException(ResponseCodeEnum.INTERNAL_HANDLE_ERROR, StringMsg.fmtMsg("create image file exception"), e);
 //        }
 //
-//        MSXFHttpResponse uploadRes;
+//        niewjHttpResponse uploadRes;
 //        try {
 //            Map<String, String> otherParam = new HashMap<>();
 //            otherParam.put("bizCode", NciicHelper.simpleImageFtpBizCode);
 //            otherParam.put("fileCategory", serviceCode);
 //            otherParam.put("serialNo", UUID.randomUUID().toString().replaceAll("-", ""));
 //            otherParam.put("bizNo", applyNo);
-//            uploadRes = MSXFHttpClient.fileUpload(file, otherParam, imageFtpUrl + "/file/upload");
+//            uploadRes = niewjHttpClient.fileUpload(file, otherParam, imageFtpUrl + "/file/upload");
 //        } catch (IOException e) {
 //            throw new ThirdPartException(ResponseCodeEnum.INTERNAL_HANDLE_ERROR, StringMsg.fmtMsg(serviceCode + " upload image exception", e));
 //        }
@@ -303,8 +303,8 @@
 //    public static void bondApplyNo(String applyNo, String fileId, String fileCategory) throws Exception {
 //        String url = imageFtpUrl + "/file/link?fileCategory=" + fileCategory + "&bizCode=" + NciicHelper.simpleImageFtpBizCode + "&bizNo=" + applyNo + "&fileId=" + fileId;
 //        logger.info("bondApplyNo the url is {} ", url);
-//        MSXFHttpResponse msxfHttpResponse = MSXFHttpClient.get(url, 10000, 10000);
-//        logger.info("bondApplyNo the response is {},status is {}", msxfHttpResponse.getContent(), msxfHttpResponse.getHttpStatus());
+//        niewjHttpResponse niewjHttpResponse = niewjHttpClient.get(url, 10000, 10000);
+//        logger.info("bondApplyNo the response is {},status is {}", niewjHttpResponse.getContent(), niewjHttpResponse.getHttpStatus());
 //    }
 //
 //
@@ -334,14 +334,14 @@
 ////        InputStream inputStream = FtpHelper.getInputStreamByGet(strUrl);
 ////        FtpHelper.saveData(inputStream, file);
 //
-//        MSXFHttpResponse uploadRes;
+//        niewjHttpResponse uploadRes;
 //        try {
 //            Map<String, String> otherParam = new HashMap<>();
 //            otherParam.put("bizCode", NciicHelper.simpleImageFtpBizCode);
 //            otherParam.put("fileCategory", fileCategory);
 //            otherParam.put("serialNo", UUID.randomUUID().toString().replaceAll("-", ""));
 //            otherParam.put("bizNo", bizNo);
-//            uploadRes = MSXFHttpClient.fileUpload(file, otherParam, imageFtpUrl + "/file/upload");
+//            uploadRes = niewjHttpClient.fileUpload(file, otherParam, imageFtpUrl + "/file/upload");
 //        } catch (IOException e) {
 //            throw new ThirdPartException(ResponseCodeEnum.INTERNAL_HANDLE_ERROR, StringMsg.fmtMsg(fileCategory + " upload image exception", e));
 //        }

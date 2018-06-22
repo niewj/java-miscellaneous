@@ -17,7 +17,7 @@ public class MyLittleHBaseClient {
         Configuration config = HBaseConfiguration.create();
 
         // 从zk配置加载hbase信息
-        config.set("hbase.zookeeper.quorum", "master.14.msxf.spark,slave1.146.msxf.spark,slave2.207.msxf.spark");
+        config.set("hbase.zookeeper.quorum", "master.14.niewj.spark,slave1.146.niewj.spark,slave2.207.niewj.spark");
         config.set("hbase.zookeeper.property.clientPort", "2181");
         config.set("zookeeper.znode.parent", "/hbase");
 

@@ -212,7 +212,7 @@ public class FilePostBase64Util {
 
 //    public static void main(String[] args) {
 //        try {
-//            File f = FilePostBase64Util.fetchRemoteFile("http://filesystem.msxf.lotest/file/download", "666666", "104225573", "d:/aaa", "13233");
+//            File f = FilePostBase64Util.fetchRemoteFile("http://filesystem.niewj.lotest/file/download", "666666", "104225573", "d:/aaa", "13233");
 //            String s = FilePostBase64Util.encodeFileToBase64(f);
 //
 //            System.out.println(s);
