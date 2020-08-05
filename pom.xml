@@ -3,21 +3,22 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.niewj.basic</groupId>
-    <artifactId>java-effective</artifactId>
+    <artifactId>java-miscellaneous</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
     <modules>
         <module>concurrent</module>
-        <module>tutos</module>
+        <module>java-tutos</module>
         <module>java-gui</module>
         <module>zoo-spring-mybatis-web</module>
         <module>zoo-kafka-lessons</module>
-        <module>zoo-springboot-demo1</module>
         <module>zoo-jfinal-web</module>
         <module>zoo-hbase-path</module>
     </modules>
-    <packaging>pom</packaging>
 
-    <name>java-effective</name>
+
+    <name>java-miscellaneous</name>
     <url>http://maven.apache.org</url>
 
     <properties>

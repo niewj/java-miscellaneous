@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>java-effective</artifactId>
+        <artifactId>java-miscellaneous</artifactId>
         <groupId>com.niewj.basic</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
@@ -15,8 +15,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <hadoop.version>2.5.0-mr1-cdh5.3.5</hadoop.version>
-        <hbase.version>1.0.0-cdh5.4.3</hbase.version>
+        <hadoop.version>1.2.1</hadoop.version>
+        <hbase.version>2.1.10</hbase.version>
         <org.slf4j-version>1.7.13</org.slf4j-version>
         <log4j-version>1.2.17</log4j-version>
         <phoenix-version>4.12.0-HBase-1.1</phoenix-version>
@@ -172,8 +172,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <compilerArguments>
                         <verbose/>
                     </compilerArguments>
