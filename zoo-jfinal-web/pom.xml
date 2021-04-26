@@ -17,7 +17,7 @@
         <httpclient.version>4.5.1</httpclient.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <commons.lang3.version>3.3.2</commons.lang3.version>
-        <commons.io.version>2.4</commons.io.version>
+        <commons.io.version>2.7</commons.io.version>
         <commons.crypto.version>1.0.0</commons.crypto.version>
         <httpclient.version>4.5.1</httpclient.version>
         <hbase.version>1.0.0-cdh5.4.3</hbase.version>
