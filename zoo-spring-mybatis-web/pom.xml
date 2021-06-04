@@ -18,7 +18,7 @@
         <org.slf4j-version>1.7.13</org.slf4j-version>
         <log4j-version>1.2.17</log4j-version>
         <quartz.version>2.2.2</quartz.version>
-        <httpclient.version>4.5.1</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
 
         <jetty.version>8.1.16.v20140903</jetty.version>
     </properties>
