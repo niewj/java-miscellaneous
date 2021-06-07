@@ -1,4 +1,4 @@
-**为了看起来没有那么多repositories, 使用了maven父子模块把几个modules集合到一块**
+**把几个modules集合到一块**
 #### _java-miscellaneous_
 **submodules:**
 - concurrent
