@@ -20,7 +20,7 @@
         <quartz.version>2.2.2</quartz.version>
         <httpclient.version>4.5.1</httpclient.version>
 
-        <jetty.version>8.1.16.v20140903</jetty.version>
+        <jetty.version>9.4.41.v20210516</jetty.version>
     </properties>
     <dependencies>
         <!-- mongo -->
